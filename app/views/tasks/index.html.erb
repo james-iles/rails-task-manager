@@ -1,10 +1,16 @@
+<div class="container">
 <h1>My Tasks</h1>
-<ul>
-    <% @tasks.each do |task| %>
-    <li>
-      <%= link_to task.title, task_path(task) %>
-    </li>
-    <% end %>
-</ul>
+<div class="list-group m-3">
+  <% @tasks.each do |task| %>
+  <div class="list-group-item d-flex justify-content-between align-items-center <%= 'list-group-item-success' if task.completed %>">
+    <%= link_to task.title, task_path(task), class: "fw-bold text-decoration-none" %>
+    <div>
+    <%= link_to "Edit", edit_task_path(task), class: "btn btn-sm btn-primary me-1" %>
+    <%= link_to "Delete", task_path(task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-sm btn-danger" %>
+    </div>
+  </div>
+  <% end %>
+</div>
 <hr>
-<%= link_to "Create Task", tasks_new_path %>
+<%= link_to "Create Task", new_task_path, class: "btn btn-success"%>
+</div>

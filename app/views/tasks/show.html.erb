@@ -1,5 +1,18 @@
-<h2><%= @task.title %></h2>
-<p><%= @task.details %></p>
-<p><%= @task.completed %></p>
-
-<%= link_to "Back to tasks", tasks_path %>
+<div class="container mt-3">
+  <div class="card mb-3" style="max-width:600px">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h2 class="card-title"><%= @task.title %></h2>
+      <%= link_to "Edit", edit_task_path(@task), class: "btn btn-sm btn-primary" %>
+    </div>
+    <p class="card-text"><%= @task.details %></p>
+    <p>
+      <strong>Status:</strong>
+      <span class="badge <%= @task.completed ? 'bg-success' : 'bg-warning text-dark' %>">
+        <%= @task.completed ? 'Complete' : 'Pending' %>
+      </span>
+    </p>
+    <%= link_to "Back to tasks", tasks_path, class: "btn btn-sm btn-secondary mt-2" %>
+  </div>
+</div>
+</div>
